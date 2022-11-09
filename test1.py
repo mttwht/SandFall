@@ -3,6 +3,7 @@ import pygame
 from pygame.locals import *
 import os
 import sys
+import random
 
 os.putenv('SDL_FBDEV', '/dev/fb1')
 
@@ -11,7 +12,7 @@ pygame.init()
 SCREEN_WIDTH = 320
 SCREEN_HEIGHT = 240
 
-FRAMERATE = 50
+FRAMERATE = 30
 
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -43,9 +44,22 @@ def updateGameBoard(board):
         for x in reversed(range(BOARD_WIDTH)):
             cell = board[y][x]
             if cell != 0:
-                if(y+1 < BOARD_HEIGHT and board[y+1][x] == 0):
-                    board[y+1][x] = cell
-                    board[y][x] = 0
+                if y+1 < BOARD_HEIGHT:
+                    if board[y+1][x] == 0:
+                        board[y+1][x] = cell
+                        board[y][x] = 0
+                    else:
+                        diags = []
+                        if x+1 < BOARD_WIDTH and board[y+1][x+1] == 0 :
+                            diags.append(x+1)
+                        if x-1 >= 0 and board[y+1][x-1] == 0:
+                            diags.append(x-1)
+                        
+                        if len(diags):
+                            ind = 0 if len(diags) == 1 else random.randint(0, 1)
+                            x2 = diags[ind]
+                            board[y+1][x2] = cell
+                            board[y][x] = 0
     return board
 
 def drawGameBoard(board):
