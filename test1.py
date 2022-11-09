@@ -69,6 +69,14 @@ def drawGameBoard(board):
             if cell != 0:
                 pygame.draw.rect(lcd, cell, pygame.Rect(x * GRAIN_SIZE, y * GRAIN_SIZE, GRAIN_SIZE, GRAIN_SIZE))
 
+def getGrainColour(baseColour):
+    colour = list(baseColour)
+    for i in range(len(colour)):
+        x = colour[i] + random.randint(-20, 20)
+        x = 0 if x < 0 else 255 if x > 255 else x
+        colour[i] = x
+    return colour
+
 game_board = initGameBoard()
 
 while True:
@@ -82,7 +90,7 @@ while True:
         left, middle, right = pygame.mouse.get_pressed()
         if left or middle or right:
             x, y = pygame.mouse.get_pos()
-            game_board[int(y / GRAIN_SIZE)][int(x / GRAIN_SIZE)] = ORANGE
+            game_board[int(y / GRAIN_SIZE)][int(x / GRAIN_SIZE)] = getGrainColour(ORANGE)
 
 
     lcd.fill(WHITE)
