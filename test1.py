@@ -16,7 +16,7 @@ FRAMERATE = 30
 
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
-ORANGE = (255, 127, 0)
+ORANGE = (0xff, 0xaf, 0x65)
 WHITE = (255, 255, 255)
 
 GRAIN_SIZE = 5
