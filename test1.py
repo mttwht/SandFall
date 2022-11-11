@@ -86,6 +86,10 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
+        
+        if event.type == KEYUP:
+            if event.key == K_d:
+                game_board = initGameBoard()
 
         left, middle, right = pygame.mouse.get_pressed()
         if left or middle or right:
