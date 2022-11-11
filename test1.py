@@ -9,24 +9,24 @@ os.putenv('SDL_FBDEV', '/dev/fb1')
 
 pygame.init()
 
-SCREEN_WIDTH = 320
-SCREEN_HEIGHT = 240
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 
-FRAMERATE = 30
+FRAMERATE = 60
 
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
 ORANGE = (0xff, 0xaf, 0x65)
 WHITE = (255, 255, 255)
 
-GRAIN_SIZE = 5
+GRAIN_SIZE = 10
 
 BOARD_WIDTH = int(SCREEN_WIDTH / GRAIN_SIZE)
 BOARD_HEIGHT = int(SCREEN_HEIGHT / GRAIN_SIZE)
 
-lcd = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+lcd = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), FULLSCREEN)
 
-# pygame.mouse.set_visible(False)
+pygame.mouse.set_visible(False)
 
 clock = pygame.time.Clock()
 font = pygame.font.Font(None, 100)
