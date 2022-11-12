@@ -5,7 +5,7 @@ import os
 import sys
 import random
 
-os.putenv('SDL_FBDEV', '/dev/fb1')
+# os.putenv('SDL_FBDEV', '/dev/fb1')
 
 pygame.init()
 
